@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: httpd:alpine
+        image: sumonpaul/mynginx:latest
         ports:
         - containerPort: 80
 ---
