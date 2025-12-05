@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: caddy
-        image: caddy:2.7
+        image: caddy:latest
         ports:
         - containerPort: 2015
 ---
