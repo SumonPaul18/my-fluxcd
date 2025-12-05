@@ -5,6 +5,7 @@ metadata:
   name: nginx-1-flux-Kustomization
   namespace: flux-system
 spec:
+  suspend: true
   interval: 5m
   path: ./clusters/k3s/apps/nginx-1
   prune: true
