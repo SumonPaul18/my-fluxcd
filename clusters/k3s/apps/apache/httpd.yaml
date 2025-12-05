@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: sumonpaul/mynginx:latest
+        image: wordpress:cli-php8.3
         ports:
         - containerPort: 80
 ---
