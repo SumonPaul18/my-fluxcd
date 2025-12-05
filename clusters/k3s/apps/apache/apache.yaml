@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+meta
+  name: apache-http
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-http
+  template:
+    meta
+      labels:
+        app: apache-http
+    spec:
+      containers:
+      - name: apache
+        image: httpd:2.4
+        ports:
+        - containerPort: 80
+        # Apache listens on 80 inside, but we expose as 8080 externally via Service
