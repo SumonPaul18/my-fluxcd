@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
-meta
+metadata:
   name: caddy-demo
   namespace: default
 spec:
@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: caddy-demo
   template:
-    meta
+    metadata:
       labels:
         app: caddy-demo
     spec:
@@ -21,7 +21,7 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-meta
+metadata:
   name: caddy-demo
   namespace: default
 spec:
@@ -31,12 +31,12 @@ spec:
   ports:
     - port: 2015
       targetPort: 2015
-      nodePort: 30115  # Fixed NodePort
+      nodePort: 30116  # Fixed NodePort
 ---
 # Optional: also expose via Traefik for dual access
 apiVersion: networking.k8s.io/v1
 kind: Ingress
-meta
+metadata:
   name: caddy-demo
   namespace: default
   annotations:
