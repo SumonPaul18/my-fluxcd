@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-http
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: apache-http
+  ports:
+    - protocol: TCP
+      port: 8080      # Service port
+      targetPort: 80  # Container port
+---
