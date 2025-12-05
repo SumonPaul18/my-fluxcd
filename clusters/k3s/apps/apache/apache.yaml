@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
-meta
+metadata:
   name: apache-http
   namespace: default
 spec:
@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: apache-http
   template:
-    meta
+    metadata:
       labels:
         app: apache-http
     spec:
@@ -19,3 +19,4 @@ spec:
         ports:
         - containerPort: 80
         # Apache listens on 80 inside, but we expose as 8080 externally via Service
+---
