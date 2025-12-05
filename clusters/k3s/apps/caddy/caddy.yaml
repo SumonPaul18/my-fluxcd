@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+meta
+  name: caddy-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caddy-demo
+  template:
+    meta
+      labels:
+        app: caddy-demo
+    spec:
+      containers:
+      - name: caddy
+        image: caddy:2.7
+        ports:
+        - containerPort: 2015
+---
+apiVersion: v1
+kind: Service
+meta
+  name: caddy-demo
+  namespace: default
+spec:
+  type: NodePort  # Expose on node port
+  selector:
+    app: caddy-demo
+  ports:
+    - port: 2015
+      targetPort: 2015
+      nodePort: 30115  # Fixed NodePort
+---
+# Optional: also expose via Traefik for dual access
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+meta
+  name: caddy-demo
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: caddy.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: caddy-demo
+            port:
+              number: 2015
