@@ -1,0 +1,14 @@
+# clusters/k3s/apps/nginx-prod/kustomization.yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: nginx-1-flux
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./clusters/k3s/apps/nginx-1
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  validation: client
