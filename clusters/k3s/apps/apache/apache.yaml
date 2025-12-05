@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: apache
-        image: httpd:2.4
+        image: httpd:latest
         ports:
         - containerPort: 80
         # Apache listens on 80 inside, but we expose as 8080 externally via Service
