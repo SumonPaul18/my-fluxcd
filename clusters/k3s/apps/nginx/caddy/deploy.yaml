@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flux-caddy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flux-caddy
+  template:
+    metadata:
+      labels:
+        app: flux-caddy
+    spec:
+      containers:
+      - name: caddy
+        image: caddy:latest
